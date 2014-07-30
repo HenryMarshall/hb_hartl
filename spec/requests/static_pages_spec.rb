@@ -36,4 +36,15 @@ describe "StaticPages" do
     end
   end
 
+  describe "Contact Us" do
+    it "should have the content 'Contact Us'" do
+      visit '/static_pages/contact'
+      expect(page).to have_content('Contact Us')
+    end
+    it "should have the right title" do
+      visit '/static_pages/about'
+      expect(page).to have_title "RoR Tutorial | Contact Us"
+    end
+  end
+
 end
