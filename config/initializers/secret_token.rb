@@ -26,5 +26,3 @@ def secure_token
 end
 
 HbHartl::Application.config.secret_key_base = secure_token
-
-#HbHartl::Application.config.secret_key_base = '9afeb9ce6ea82def058f4c158d889001ecebc6008739a2d72f98d7b30a234bb0b70f05a0e463c24bdfba07cb23ce4af71a2258a6b0fc3126c44852939b79b05c'
