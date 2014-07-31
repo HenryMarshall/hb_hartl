@@ -6,17 +6,9 @@
                               "data-turbolinks-track" => true
     = javascript_include_tag  "application", "data-turbolinks-track" => true
     = csrf_meta_tags
-    /[if lt IE 9]
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    = render 'layouts/shim'
+    
   %body
-    %header.navbar.navbar-fixed-top.navbar-inverse
-      .navbar-inner
-        .container
-          = link_to "Hartl Tutorial", '#', id: "logo"
-          %nav
-            %ul.nav.pull-right
-              %li= link_to "Home",      '#'
-              %li= link_to "Help",      '#'
-              %li= link_to "Sign in",   '#'
+    = render 'layouts/header'
     .container
       = yield
