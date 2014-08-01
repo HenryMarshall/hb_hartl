@@ -1,5 +1,8 @@
 @import "bootstrap"
 
+// colors
+$grayMediumLight = #eaeaea
+
 // universal
 
 html 
@@ -42,14 +45,14 @@ textarea
 footer
   margin-top: 45px
   padding-top: 5px
-  border-top: 1px solid #eaeaea
-  color: #999
+  border-top: 1px solid $grayMediumLight
+  color: $grayLight
 
   a
-    color: #555
+    color: $gray
 
     &:hover
-      color: #222
+      color: $grayDarker
 
   small
     float: left
@@ -80,7 +83,7 @@ h2
   margin-bottom: 30px
   text-align: center
   font-weight: normal
-  color: #999
+  color: $grayLight
 
 p
   font-size: 1.1em
