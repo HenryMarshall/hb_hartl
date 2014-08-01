@@ -51,4 +51,18 @@ describe "StaticPages" do
     # end
   end
 
+  it "should have the right likes on the layout" do
+    visit root_path
+    click_link "Sign up now!"
+    expect(page).to have_title(full_title('Sign up'))
+    click_link "About"
+    expect(page).to have_title(full_title('About Us'))
+    click_link "Help"
+    expect(page).to have_title(full_title('Help'))
+    click_link "Contact"
+    expect(page).to have_title(full_title('Contact Us'))
+    click_link "hartl tutorial"
+    expect(page).to have_title(full_title(''))
+  end
+
 end
