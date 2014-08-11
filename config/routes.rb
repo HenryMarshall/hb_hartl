@@ -1,6 +1,8 @@
 HbHartl::Application.routes.draw do
-  get "users/new"
-  
+
+  # `get "users/new"` deprecated on implementation of `resources :users`
+  resources :users
+  resources :sessions, only: [:new, :create, :destroy]
   root 'static_pages#home'
   # use this syntax to have access to rails routes, removes the necessity
   # to visit the longer url (i.e., help vs static_pages/help)
@@ -9,9 +11,9 @@ HbHartl::Application.routes.draw do
   match '/about',   to: 'static_pages#about',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
 
-  resources :users
-
   match '/signup',  to: 'users#new',            via: 'get'
+  match '/signin',  to: 'sessions#new',         via: 'get'
+  match '/signout', to: 'sessions#destory',     via: 'delete'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
