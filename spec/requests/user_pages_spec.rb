@@ -8,6 +8,7 @@ describe "UserPages" do
 
     it { should have_selector('h1', text: 'Sign up') }
     it { should have_title(full_title('Sign up')) }
+
   end
 
   describe "signup" do
@@ -77,7 +78,7 @@ describe "UserPages" do
         fill_in "Name",             with: new_name
         fill_in "Email",            with: new_email
         fill_in "Password",         with: user.password
-        fill_in "Confirm Password", with: user.password
+        fill_in "Confirmation", with: user.password
         click_button "Save changes"
       end
 
