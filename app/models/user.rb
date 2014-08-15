@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6 }
   has_secure_password
 
+  has_many :microposts
+
 
   # remember token 
   def User.new_remember_token
