@@ -6,4 +6,13 @@
         / check out app/helpers/users_helper.rb for gravatar_for
         = gravatar_for @user, size: 80
         = @user.name
-
+  .span8
+    - if @user.microposts.any?
+      %h3= "Microposts #{@user.microposts.count}"
+      %ol.microposts
+        = render @microposts
+      / we must specify pagination of @microposts because we are in the 
+      / users controller
+      = will_paginate @microposts
+    - else
+      %h3 This user has no microposts
