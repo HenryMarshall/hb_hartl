@@ -13,6 +13,10 @@ class User < ActiveRecord::Base
 
   has_many :microposts, dependent: :destroy
 
+  def feed
+    # to be deprecated in ch 11
+    Micropost.where("user_id = ?", id)
+  end
 
   # remember token 
   def User.new_remember_token

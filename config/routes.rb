@@ -3,6 +3,7 @@ HbHartl::Application.routes.draw do
   # `get "users/new"` deprecated on implementation of `resources :users`
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
+  resources :microposts, only: [:create, :destroy]
   root 'static_pages#home'
   # use this syntax to have access to rails routes, removes the necessity
   # to visit the longer url (i.e., help vs static_pages/help)
