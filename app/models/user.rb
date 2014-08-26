@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
   has_secure_password
 
   has_many :microposts, dependent: :destroy
+  has_many :relationships, foreign_key: "follower_id", dependent: :destroy
 
   def feed
     # to be deprecated in ch 11
