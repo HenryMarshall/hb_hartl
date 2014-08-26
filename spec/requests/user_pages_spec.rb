@@ -56,11 +56,6 @@ describe "UserPages" do
     let!(:m2) { FactoryGirl.create(:micropost, user: user, content: "Bar") }
 
     before { visit user_path(user) }
-    # before { visit users_path }
-
-    # it { expect(User.all).to be_nil }
-    # it { expect(user).to be_nil }
-    # it { expect(m1).to be_nil }
 
     it { should have_content(user.name) }
     it { should have_title(user.name) }
@@ -141,6 +136,34 @@ describe "UserPages" do
         end.to change(User, :count).by(-1)
       end
       it { should_not have_link('delete', href: user_path(admin)) }
+    end
+  end
+
+  describe "following/followers" do
+    let(:user) { FactoryGirl.create(:user) }
+    let(:other_user) { FactoryGirl.create(:user) }
+    before { user.follow! other_user }
+
+    describe "followed users" do
+      before do
+        sign_in user
+        visit following_user_path(user)
+      end
+
+      it { should have_title(full_title('Following')) }
+      it { should have_selector('h3', text: 'Following') }
+      it { should have_link(other_user.name, href: user_path(other_user)) }
+    end
+
+    describe "followers" do
+      before do
+        sign_in other_user
+        visit followers_user_path(other_user)
+      end
+
+      it { should have_title(full_title('Followers')) }
+      it { should have_selector('h3', text: 'Followers') }
+      it { should have_link(user.name, href: user_path(user)) }
     end
   end
 end
