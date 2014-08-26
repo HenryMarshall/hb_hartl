@@ -14,6 +14,12 @@ class User < ActiveRecord::Base
   has_many :microposts, dependent: :destroy
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :followed_users, through: :relationships, source: :followed
+  has_many :reverse_relationship, foreign_key: "followed_id",
+                                   class_name:  "Relationship",
+                                   dependent:   :destroy
+  # `source: :follower` is optional because `follower_id` is the singular
+  # of `:followers`
+  has_many :followers, through: :reverse_relationship, source: :follower
 
   def feed
     # to be deprecated in ch 11
