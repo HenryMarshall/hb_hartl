@@ -22,8 +22,9 @@ class User < ActiveRecord::Base
   has_many :followers, through: :reverse_relationship, source: :follower
 
   def feed
-    # to be deprecated in ch 11
-    Micropost.where("user_id = ?", id)
+    Micropost.from_users_followed_by(self)
+    # deprecated for #from_users_followed_by in ch 11
+    # Micropost.where("user_id = ?", id)
   end
 
   # relationships
